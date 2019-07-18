@@ -1,4 +1,9 @@
-#WIP
+[![Build Status](https://travis-ci.org/kailuowang/tempus.svg?branch=master)](https://travis-ci.org/kailuowang/tempus)
+
+# Tempus
+## A library for time series related stuff
+
+###WIP
 
 to benchmark
 
