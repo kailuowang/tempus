@@ -96,7 +96,7 @@ lazy val devKai = Developer("Kailuo Wang", "@kailuowang", "kailuo.wang@gmail.com
 lazy val commonSettings = sharedCommonSettings ++ Seq(
   parallelExecution in Test := false,
   scalaVersion := libs.vers("scalac_2.12"),
-  crossScalaVersions := Seq(libs.vers("scalac_2.11"), scalaVersion.value, libs.vers("scalac_2.13")),
+  crossScalaVersions := Seq(libs.vers("scalac_2.11"), scalaVersion.value),
   developers := List(devKai)) ++ scalacAllSettings ++ unidocCommonSettings ++ addCompilerPlugins(libs, "kind-projector") ++ Seq(
   scalacOptions ++= (if(priorTo2_13(scalaVersion.value)) Nil else
     Seq("-Ywarn-unused:-implicits")) ++ Seq("-Xlint:-package-object-classes")
