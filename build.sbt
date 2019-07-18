@@ -53,7 +53,7 @@ lazy val timeSeriesLawsJS = timeSeriesLawsM.js
 lazy val timeSeriesLawsM = module("time-series-laws", CrossType.Pure)
   .dependsOn(timeSeriesM)
   .settings(disciplineDependencies)
-  .settings(libs.dependencies("cats-laws", "cats-mtl-laws"))
+  .settings(libs.dependencies("cats-laws"))
 
 lazy val timeSeriesTests = prj(timeSeriesTestsM)
 lazy val timeSeriesTestsJVM = timeSeriesTestsM.jvm
