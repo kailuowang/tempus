@@ -34,9 +34,12 @@ case class PeriodicalSeries[TS[_], P <: Periodical, Z <: Zone, A] private[timeSe
     *      | (5, dateTimeOf(4, 1).toInstant)))
     * scala> val dps = PeriodicalSeries.from[Monthly, Zone.UTC](ts)(_.head)
     *
-    * scala> dps.condense[Quarterly](_.fold)
-    * res0: PeriodicalSeries[ListTimeSeries, Quarterly, Zone.UTC, Int] =
-    * PeriodicalSeries(ListTimeSeries(List((3,1999-01-01T00:00:00Z), (5,1999-04-01T00:00:00Z))))
+    * scala> dps.condense[Quarterly](_.fold).show
+    * res0: String =
+    * Quarterly Time Series
+    * 1999-01-01T00:00:00Z - 3
+    * 1999-04-01T00:00:00Z - 5
+    * at UTC
     * }}}
     */
   def condense[P2 <: Periodical] = new condensePartial[TS, A, P, P2, Z](this)
@@ -255,7 +258,7 @@ sealed abstract class PeriodicalSeriesInstances0 extends PeriodicalSeriesInstanc
       showP: Show[Periodical]): Show[PeriodicalSeries[TS, P, Z, A]] =
     new Show[PeriodicalSeries[TS, P, Z, A]] {
       def show(t: PeriodicalSeries[TS, P, Z, A]): String =
-        show"$p ${t.ts}" + " at " + Z.id.toString
+        show"$p ${t.ts}" + "at " + Z.id.toString
     }
 
   implicit def monoidKForPeriodSeries[TS[_], P <: Periodical, Z <: Zone](
