@@ -4,6 +4,12 @@ sudo: false
 jdk:
   - oraclejdk8
 
+service:
+  - docker
+
+before_install:
+  -  docker run -d -p 8086:8086 -v $PWD:/var/lib/influxdb influxdb
+
 before_cache:
   - find $HOME/.sbt -name "*.lock" -type f -delete
   - find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
@@ -17,4 +23,4 @@ cache:
 jobs:
   include:
     - env: TEST="validate"
-      script: sbt +test
+      script: sbt validate

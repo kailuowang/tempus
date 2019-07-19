@@ -10,6 +10,8 @@ lazy val libs = org.typelevel.libraries
 val apache2 = "Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html")
 val gh = GitHubSettings(org = "kailuowang", proj = "tempus", publishOrg = "com.kailuowang", license = apache2)
 
+addCommandAlias("validate", s";+clean;+test;+storage/IntegrationTest/test;bench/compile")
+
 lazy val rootSettings = buildSettings ++ commonSettings ++ publishSettings ++ scoverageSettings
 
 lazy val tempus = project.in(file("."))
