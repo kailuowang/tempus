@@ -17,4 +17,4 @@ cache:
 jobs:
   include:
     - env: TEST="validate"
-      script: sbt ';+test:compile;+time-series-tests/test'
+      script: sbt +test
