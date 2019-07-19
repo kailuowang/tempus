@@ -121,4 +121,6 @@ private [timeSeries] final class TimeSeriesForListTimeSeries
 
   override def toListWithTime[A](fa: ListTimeSeries[A]): List[(A, Instant)] =
     fa.list.coerce
+
+  override def toList[A](fa: ListTimeSeries[A]): List[A] = fa.list.map(_.v)
 }
