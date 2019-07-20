@@ -175,7 +175,7 @@ class InfluxTSStorageSuite extends AnyFunSuiteLike with Matchers with BeforeAndA
 
     }.unsafeRunSync()
 
-    retrieved.toList should be(empty)
+    retrieved.list should be(empty)
   }
 
   after(withDBClient { cl =>

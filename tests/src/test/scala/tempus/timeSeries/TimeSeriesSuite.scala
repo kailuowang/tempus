@@ -42,7 +42,7 @@ trait TimeSeriesSuite
         .map(ListTimeSeries.fromUnOrdered _))
   }
 
-  implicit def eqVTS[A: Eq]: Eq[ListTimeSeries[A]] = Eq.by(vs => vs.l)
+  implicit def eqVTS[A: Eq]: Eq[ListTimeSeries[A]] = Eq.by(vs => vs.list)
 
   implicit def eqP[P <: Periodical]: Eq[P] = Eq.fromUniversalEquals[P]
 

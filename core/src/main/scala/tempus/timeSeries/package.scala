@@ -49,4 +49,30 @@ package object timeSeries {
     def compare(x: TimeStamped[A], y: TimeStamped[A]): Int = x.time.compare(y.time)
   }
 
+
+  @newtype
+  case class ListTimeSeries[A](list: List[TimeStamped[A]])
+
+  object ListTimeSeries {
+
+    def fromUnOrdered[A](v: List[TimeStamped[A]]) = ListTimeSeries(v.sorted)
+
+    implicit def showForListTimeSeries[A: Show]: Show[ListTimeSeries[A]] =
+      Show.show(
+        _.list
+          .map(_.show)
+          .mkString(
+            "Time Series\n",
+            "\n",
+            "\n"
+          ))
+
+    implicit val timeSeriesForListTimeSeries: TimeSeries[ListTimeSeries] =
+      new TimeSeriesForListTimeSeries
+
+
+
+
+  }
+
 }
