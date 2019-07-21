@@ -2,6 +2,7 @@ package tempus.timeSeries
 
 import java.time._
 
+import cats.data.Chain
 import tempus.timeSeries.syntax.TimeSeriesSyntax
 import tempus.timeSeries.testUtil.{Assertions, Factory}
 import tempus.timeSeries.time.{FreePeriod, Periodical}
@@ -9,6 +10,7 @@ import cats.kernel.Eq
 import cats.tests.CatsSuite
 import io.estatico.newtype.Coercible
 import org.scalacheck.{Arbitrary, Cogen, Gen}
+import cats.laws.discipline.arbitrary.catsLawsArbitraryForChain
 
 trait TimeSeriesSuite
     extends CatsSuite
@@ -42,7 +44,14 @@ trait TimeSeriesSuite
         .map(ListTimeSeries.fromUnOrdered _))
   }
 
-  implicit def eqVTS[A: Eq]: Eq[ListTimeSeries[A]] = Eq.by(vs => vs.list)
+  implicit def arbChainTimeSeries[A: Arbitrary]: Arbitrary[ChainTimeSeries[A]] = {
+    Arbitrary(
+      implicitly[Arbitrary[Chain[TimeStamped[A]]]].arbitrary
+        .map(ChainTimeSeries.fromUnOrdered _))
+  }
+
+  implicit def eqListTS[A: Eq]: Eq[ListTimeSeries[A]] = Eq.by(vs => vs.list)
+  implicit def eqChainTS[A: Eq]: Eq[ChainTimeSeries[A]] = Eq.by(vs => vs.chain)
 
   implicit def eqP[P <: Periodical]: Eq[P] = Eq.fromUniversalEquals[P]
 

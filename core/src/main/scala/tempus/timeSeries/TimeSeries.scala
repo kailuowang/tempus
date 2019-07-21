@@ -5,11 +5,9 @@ import java.time.Instant
 
 import cats.data.Ior.Both
 import cats.data.{Ior, NonEmptyList}
-import cats.{Applicative, Foldable, Functor, MonoidK, Traverse}
+import cats.{Applicative, Foldable, Functor, FunctorFilter, MonoidK, Show, Traverse}
 import simulacrum.typeclass
-import cats.instances.list._
-import cats.FunctorFilter
-import cats.syntax.ior._
+import cats.implicits._
 
 @typeclass
 trait TimeSeries[F[_]] extends Traverse[F] with FunctorFilter[F] with MonoidK[F] {
@@ -108,4 +106,10 @@ trait TimeSeries[F[_]] extends Traverse[F] with FunctorFilter[F] with MonoidK[F]
        i.right.flatMap(_.right))
     }
 
+}
+
+object TimeSeries {
+  implicit def showInstance[TS[_], A: Show](implicit TS: TimeSeries[TS]) : Show[TS[A]] = Show.show { fa =>
+    TS.mapWithTime(fa)(TimeStamped(_, _).show).foldSmash("Time Series\n", "\n", "\n")
+  }
 }

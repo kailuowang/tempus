@@ -2,6 +2,7 @@ package tempus
 
 import java.time.Instant
 
+import cats.data.Chain
 import cats.{Eq, Functor, Show}
 import cats.kernel.Order
 import io.estatico.newtype.macros.newtype
@@ -57,21 +58,25 @@ package object timeSeries {
 
     def fromUnOrdered[A](v: List[TimeStamped[A]]) = ListTimeSeries(v.sorted)
 
-    implicit def showForListTimeSeries[A: Show]: Show[ListTimeSeries[A]] =
-      Show.show(
-        _.list
-          .map(_.show)
-          .mkString(
-            "Time Series\n",
-            "\n",
-            "\n"
-          ))
-
+    implicit def showForListTimeSeries[A: Show]: Show[ListTimeSeries[A]] = TimeSeries.showInstance
+    
     implicit val timeSeriesForListTimeSeries: TimeSeries[ListTimeSeries] =
       new TimeSeriesForListTimeSeries
 
+  }
 
+  @newtype
+  case class ChainTimeSeries[A](chain: Chain[TimeStamped[A]])
 
+  object ChainTimeSeries {
+
+    def fromUnOrdered[A](c: Chain[TimeStamped[A]]) = fromUnOrderedList(c.toList)
+    def fromUnOrderedList[A](l: List[TimeStamped[A]]) = ChainTimeSeries(Chain.fromSeq(l.sorted))
+
+    implicit def showForChainTimeSeries[A: Show]: Show[ChainTimeSeries[A]] = TimeSeries.showInstance
+    
+    implicit val timeSeriesForChainTimeSeries: TimeSeries[ChainTimeSeries] =
+      new TimeSeriesForChainTimeSeries
 
   }
 
