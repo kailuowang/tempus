@@ -1,4 +1,4 @@
-package tempus.timeSeries.time
+package tempus.time
 
 import java.time.{Duration, Instant, LocalDate}
 

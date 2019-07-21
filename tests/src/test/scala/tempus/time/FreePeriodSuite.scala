@@ -1,4 +1,4 @@
-package tempus.timeSeries.time
+package tempus.time
 
 import cats.kernel.laws.discipline.PartialOrderTests
 import tempus.timeSeries.TimeSeriesSuite

@@ -2,8 +2,8 @@ package tempus.timeSeries
 
 import java.time._
 
-import tempus.timeSeries.time.Periodical.{Annually, Daily, Monthly, Quarterly}
-import tempus.timeSeries.time.Zone.UTC
+import tempus.time.Periodical.{Annually, Daily, Monthly, Quarterly}
+import tempus.time.Zone.UTC
 
 import scala.concurrent.duration._
 

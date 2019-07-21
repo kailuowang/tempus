@@ -3,8 +3,8 @@ package timeSeries
 
 import java.time.{Instant, LocalDate}
 
-import tempus.timeSeries.PeriodicalSeries.condensePartial
-import tempus.timeSeries.time.Periodical.{Daily, Include}
+import PeriodicalSeries.condensePartial
+import time.Periodical.{Daily, Include}
 import cats.{Applicative, Eval, Foldable, Functor, MonoidK, Show, Traverse}
 import cats.data.{Ior, NonEmptyList, State}
 import time.{Period, Periodical, Zone}
@@ -25,8 +25,8 @@ case class PeriodicalSeries[TS[_], P <: Periodical, Z <: Zone, A] private[timeSe
     *
     * {{{
     * scala> import cats.implicits._
-    * scala> import tempus.timeSeries._, time._, Periodical._
-    * scala> import tempus.timeSeries.testUtil._
+    * scala> import tempus.timeSeries._, tempus.time._, Periodical._
+    * scala> import tempus.testUtil._
     *
     * scala> val ts = TimeSeries[ListTimeSeries].from(List(
     *      | (1, dateTimeOf(1, 1).toInstant),

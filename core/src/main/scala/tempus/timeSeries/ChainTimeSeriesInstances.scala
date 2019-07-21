@@ -1,4 +1,5 @@
-package tempus.timeSeries
+package tempus
+package timeSeries
 
 import java.time.Instant
 
@@ -6,7 +7,7 @@ import cats.data._
 import cats.implicits._
 import cats.{Applicative, Eval, Foldable, Functor}
 import io.estatico.newtype.ops._
-import tempus.timeSeries.implicits._
+import implicits._
 
 import scala.annotation.tailrec
 

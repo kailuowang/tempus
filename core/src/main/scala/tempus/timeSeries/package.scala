@@ -8,7 +8,7 @@ import cats.kernel.Order
 import io.estatico.newtype.macros.newtype
 import io.estatico.newtype.ops._
 import cats.implicits._
-import timeSeries.implicits._
+import implicits._
 
 package object timeSeries {
   @newtype case class TimeStamped[A](tuple: (A, Instant)) {

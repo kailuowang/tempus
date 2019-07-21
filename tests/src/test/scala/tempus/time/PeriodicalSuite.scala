@@ -1,9 +1,9 @@
-package tempus.timeSeries
+package tempus
 package time
 
-import tempus.timeSeries.time.Periodical._
+import Periodical._
 
-class PeriodicalSuite extends TimeSeriesSuite {
+class PeriodicalSuite extends TempusSuite {
   test("Monthly periodOf Jan") {
     val period = Period.of[Monthly, Zone.UTC](dateTimeOf(1, 3, 13))
 

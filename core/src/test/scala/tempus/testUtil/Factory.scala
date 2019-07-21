@@ -1,9 +1,9 @@
-package tempus.timeSeries.testUtil
+package tempus.testUtil
 
 import java.time._
 
-import tempus.timeSeries.time.Zone.EST
-import tempus.timeSeries.time.{Periodical, Zone}
+import tempus.time.Zone.EST
+import tempus.time.{Periodical, Zone}
 import tempus.timeSeries.{ListTimeSeries, PeriodicalSeries, TimeStamped}
 
 trait Factory {

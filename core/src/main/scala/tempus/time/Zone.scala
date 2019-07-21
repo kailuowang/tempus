@@ -1,5 +1,4 @@
 package tempus
-package timeSeries
 package time
 
 import java.time.ZoneId

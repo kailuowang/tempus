@@ -4,7 +4,7 @@ import java.time.Instant
 
 import tempus.timeSeries.TimeSeries
 import cats.laws.{IsEq, TraverseLaws}
-import tempus.timeSeries.implicits._
+import tempus.implicits._
 import cats.data.Ior.Both
 import cats.{Applicative, Foldable}
 import cats.data.{Ior, NonEmptyList}
