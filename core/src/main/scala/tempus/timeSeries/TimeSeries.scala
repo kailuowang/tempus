@@ -8,6 +8,7 @@ import cats.data.{Ior, NonEmptyList}
 import cats.{Applicative, Foldable, Functor, FunctorFilter, MonoidK, Show, Traverse}
 import simulacrum.typeclass
 import cats.implicits._
+import cats.kernel.CommutativeMonoid
 
 @typeclass
 trait TimeSeries[F[_]] extends Traverse[F] with FunctorFilter[F] with MonoidK[F] {
@@ -105,6 +106,11 @@ trait TimeSeries[F[_]] extends Traverse[F] with FunctorFilter[F] with MonoidK[F]
        i.right.flatMap(_.left),
        i.right.flatMap(_.right))
     }
+
+  implicit def monoid[A]: CommutativeMonoid[F[A]] = new CommutativeMonoid[F[A]] {
+    def empty: F[A] = algebra[A].empty
+    def combine(x: F[A], y: F[A]): F[A] = algebra[A].combine(x, y)
+  }
 
 }
 

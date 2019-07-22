@@ -18,7 +18,7 @@ class PeriodicalSeriesSuite extends TimeSeriesSuite {
 
     val ps = PeriodicalSeries.from[Monthly, UTC](ts)(_.fold)
 
-    ps shouldBe PeriodicalSeries(
+    ps shouldBe PeriodicalSeries[ListTimeSeries, Monthly, UTC, Int](
       ListTimeSeries(
         List(
           TimeStamped(2, dateTimeOf(1, 1, 0, 0, zoneId = UTC.id).toInstant),
