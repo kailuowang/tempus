@@ -73,7 +73,8 @@ trait TimeSeriesTests[F[_]]
       "outer join consistence" -> forAll(laws.outerJoinConsistent[A, B] _),
       "inner join duplication" -> forAll(laws.innerJoinWithDuplication[A, B] _),
       "inner join left only" -> forAll(laws.innerJoinWithLeftOnly[A, B] _),
-      "inner join right only" -> forAll(laws.innerJoinWithRightOnly[A, B] _)
+      "inner join right only" -> forAll(laws.innerJoinWithRightOnly[A, B] _),
+      "commutativeCombineK" -> forAll(laws.commutativeCombineK[A] _)
     )
   }
 }

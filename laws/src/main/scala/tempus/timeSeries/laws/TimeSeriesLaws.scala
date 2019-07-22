@@ -66,6 +66,9 @@ trait TimeSeriesLaws[F[_]]
     fa.outerJoin(fb) <-> expected
   }
 
+  def commutativeCombineK[A](fa: F[A], fb: F[A]): IsEq[F[A]] =
+    F.combineK(fa, fb) <-> F.combineK(fb, fa)
+
 }
 
 object TimeSeriesLaws {
