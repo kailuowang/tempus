@@ -3,6 +3,9 @@ dynamodb-local
 temp-data
 target
 .idea
+data
+meta
+wal
 /.idea_modules
 /.classpath
 /.project
