@@ -11,7 +11,6 @@ import implicits._
 import scala.annotation.tailrec
 import io.estatico.newtype.ops._
 
-
 private [timeSeries] class ListTimeSeriesFunctor extends Functor[ListTimeSeries] {
   def mapTS[A, B](fa: ListTimeSeries[A])(
     f: TimeStamped[A] => TimeStamped[B]): ListTimeSeries[B] =
@@ -124,3 +123,4 @@ private [timeSeries] final class TimeSeriesForListTimeSeries
 
   override def toList[A](fa: ListTimeSeries[A]): List[A] = fa.list.map(_.v)
 }
+

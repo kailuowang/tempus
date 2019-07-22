@@ -1,5 +1,6 @@
 package tempus
-package timeSeries
+
+import tempus.timeSeries.syntax
 
 object implicits extends AllInstances with AllSyntax
 

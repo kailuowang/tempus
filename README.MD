@@ -13,9 +13,9 @@ jmh:compile
 jmh:run -i 15 -wi 6 -f1 -t1 .*time
 ```
 
-To run test, it requires 
+To run storage/IntegrationTest/test, it requires an influx instance
+Easiest way to setup to a local one is docker
 
-* influx
-  ```
-  influxd -config /usr/local/etc/influxdb.conf
-  ```
+```bash
+  docker run -d -p 8086:8086 -v $PWD:/var/lib/influxdb influxdb
+```

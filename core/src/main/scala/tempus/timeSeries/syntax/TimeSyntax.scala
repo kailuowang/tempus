@@ -3,7 +3,7 @@ package tempus.timeSeries.syntax
 import java.time.{Instant, LocalDate}
 import java.time.temporal.ChronoUnit.NANOS
 
-import tempus.timeSeries.time.Zone
+import tempus.time.Zone
 
 import scala.concurrent.duration.Duration
 import scala.concurrent.duration._

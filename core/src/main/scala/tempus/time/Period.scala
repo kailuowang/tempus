@@ -1,12 +1,11 @@
 package tempus
-package timeSeries
 package time
 
 import java.time.{Duration, Instant, LocalDate}
 
-import tempus.timeSeries.time.Periodical.Include
+import tempus.time.Periodical.Include
 import cats.{PartialOrder, Show}
-import timeSeries.implicits._
+import implicits._
 import cats.implicits._
 
 import scala.annotation.tailrec

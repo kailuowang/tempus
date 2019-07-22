@@ -2,8 +2,8 @@ package tempus.timeSeries
 
 import java.time._
 
-import tempus.timeSeries.time.Periodical.{Annually, Daily, Monthly, Quarterly}
-import tempus.timeSeries.time.Zone.UTC
+import tempus.time.Periodical.{Annually, Daily, Monthly, Quarterly}
+import tempus.time.Zone.UTC
 
 import scala.concurrent.duration._
 
@@ -18,7 +18,7 @@ class PeriodicalSeriesSuite extends TimeSeriesSuite {
 
     val ps = PeriodicalSeries.from[Monthly, UTC](ts)(_.fold)
 
-    ps shouldBe PeriodicalSeries(
+    ps shouldBe PeriodicalSeries[ListTimeSeries, Monthly, UTC, Int](
       ListTimeSeries(
         List(
           TimeStamped(2, dateTimeOf(1, 1, 0, 0, zoneId = UTC.id).toInstant),

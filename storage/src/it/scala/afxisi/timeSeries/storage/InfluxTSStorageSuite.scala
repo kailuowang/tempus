@@ -1,9 +1,10 @@
-package tempus.timeSeries
+package tempus
+package timeSeries
 package storage
 
-import tempus.timeSeries.implicits._
+import implicits._
 import tempus.timeSeries.storage.InfluxTSStorage.{Codec, fromFuture}
-import tempus.timeSeries.testUtil.{instantEST, tsOf}
+import tempus.testUtil.{instantEST, tsOf}
 import cats.effect.{Async, IO}
 import cats.implicits._
 import com.paulgoldbaum.influxdbclient.InfluxDB

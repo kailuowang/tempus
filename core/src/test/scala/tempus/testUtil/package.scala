@@ -1,4 +1,4 @@
-package tempus.timeSeries
+package tempus
 
 
 package object testUtil extends Factory

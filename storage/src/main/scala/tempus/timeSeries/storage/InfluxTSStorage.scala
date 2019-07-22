@@ -1,4 +1,5 @@
-package tempus.timeSeries
+package tempus
+package timeSeries
 package storage
 
 import java.time.Instant

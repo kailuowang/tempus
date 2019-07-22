@@ -4,7 +4,7 @@ import java.time.Instant
 
 import tempus.timeSeries.TimeSeries
 import cats.laws.{IsEq, TraverseLaws}
-import tempus.timeSeries.implicits._
+import tempus.implicits._
 import cats.data.Ior.Both
 import cats.{Applicative, Foldable}
 import cats.data.{Ior, NonEmptyList}
@@ -65,6 +65,9 @@ trait TimeSeriesLaws[F[_]]
     }).toList.map(_.swap))
     fa.outerJoin(fb) <-> expected
   }
+
+  def commutativeCombineK[A](fa: F[A], fb: F[A]): IsEq[F[A]] =
+    F.combineK(fa, fb) <-> F.combineK(fb, fa)
 
 }
 

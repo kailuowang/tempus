@@ -1,4 +1,4 @@
-package tempus.timeSeries
+package tempus
 package time
 
 import java.time.temporal.IsoFields

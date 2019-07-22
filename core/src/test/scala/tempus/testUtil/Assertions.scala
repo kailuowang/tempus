@@ -1,7 +1,7 @@
-package tempus.timeSeries.testUtil
+package tempus.testUtil
 
 import tempus.timeSeries.{ListTimeSeries, PeriodicalSeries}
-import tempus.timeSeries.time.{Periodical, Zone}
+import tempus.time.{Periodical, Zone}
 import cats.data.Ior.Both
 import org.scalatest.funsuite.AnyFunSuiteLike
 import org.scalatest.{Assertion, Matchers}
